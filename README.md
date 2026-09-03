@@ -11,3 +11,10 @@ from module root (/homelab-001/pihole), first:
 ```docker compose up -d```
 - check with `docker compose ps` 
 - finally, check dashboard at http://<VM-IP>:8080/admin
+
+to setup adblocking on your home network:
+- go to http://192.168.0.1/admin
+- go to your DHCP settings (or whatever they're called for you)
+- set primary DNS as your VM IP (`ip a` in terminal)
+- secondary DNS as 1.1.1.1 for fallback IP
+- should be good 
