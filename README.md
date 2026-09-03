@@ -2,8 +2,9 @@
 fooling around with homelab stuff
 
 ## homelab-001/pihole/
-module for pihole stuff. use .env.example to as an example to build your own pihole.
+module for pihole stuff. use env.example to as an example to build your own pihole.
 from module root (/homelab-001/pihole), first:
+- write your `pihole/.env` file using `pihole/env.example`
 - check that Docker Compose sees your configuration
 ```docker compose config```
 - If it doesn't, ... Check your docker version.
