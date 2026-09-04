@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Homelab Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
 
 <body>
+
     <main class="dashboard">
 
         <header class="header">
+
             <div>
                 <h1>Homelab Dashboard</h1>
                 <p>deb-workspace</p>
@@ -20,59 +27,113 @@
                 <span class="status-dot"></span>
                 Online
             </div>
+
         </header>
 
+
         <section>
+
             <h2>System</h2>
 
             <div class="metrics">
 
                 <div class="card">
                     <span class="label">CPU</span>
-                    <span class="value">{{ system.cpu }}%</span>
+                    <span class="value">
+                        {{ system.cpu }}%
+                    </span>
                 </div>
 
                 <div class="card">
                     <span class="label">Memory</span>
-                    <span class="value">{{ system.memory }}%</span>
+                    <span class="value">
+                        {{ system.memory }}%
+                    </span>
                 </div>
 
                 <div class="card">
                     <span class="label">Disk</span>
-                    <span class="value">{{ system.disk }}%</span>
+                    <span class="value">
+                        {{ system.disk }}%
+                    </span>
                 </div>
 
                 <div class="card">
                     <span class="label">Uptime</span>
-                    <span class="value">{{ system.uptime }}</span>
+                    <span class="value">
+                        {{ system.uptime }}
+                    </span>
                 </div>
 
             </div>
+
         </section>
 
+
         <section>
+
             <h2>Docker Containers</h2>
 
             <div class="container-list">
 
                 {% for container in containers %}
 
-                <div class="container-card">
-                    <div class="container-info">
-                        <span class="container-name">
-                            {{ container.name }}
-                        </span>
+		<div class="container-card">
 
-                        <span class="container-image">
-                            {{ container.image.tags[0] if container.image.tags else "Unknown image" }}
-                        </span>
-                    </div>
+		    <div class="container-info">
 
-                    <span class="container-status {{ container.status }}">
-                        {{ container.status }}
-                    </span>
-                </div>
+			<span class="container-name">
+			    {{ container.name }}
+			</span>
 
+			<span class="container-image">
+			    {{ container.image }}
+			</span>
+
+		    </div>
+
+		    <div class="container-actions">
+
+			<span class="container-status {{ container.status }}">
+			    {{ container.status }}
+			</span>
+
+			{% if container.status == "running" %}
+
+			<form
+			    method="POST"
+			    action="/container/{{ container.name }}/stop"
+			>
+			    <button type="submit">
+				Stop
+			    </button>
+			</form>
+
+			<form
+			    method="POST"
+			    action="/container/{{ container.name }}/restart"
+			>
+			    <button type="submit">
+				Restart
+			    </button>
+			</form>
+
+			{% else %}
+
+			<form
+			    method="POST"
+			    action="/container/{{ container.name }}/start"
+			>
+			    <button type="submit">
+				Start
+			    </button>
+			</form>
+
+			{% endif %}
+
+		    </div>
+
+		</div>
                 {% else %}
 
                 <div class="empty">
@@ -82,8 +143,10 @@
                 {% endfor %}
 
             </div>
+
         </section>
 
     </main>
+
 </body>
 </html>

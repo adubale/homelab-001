@@ -148,3 +148,26 @@ h2 {
         flex-direction: column;
     }
 }
+
+.container-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.container-actions form {
+    margin: 0;
+}
+
+.container-actions button {
+    padding: 6px 10px;
+    background: #222630;
+    color: #e6e8eb;
+    border: 1px solid #343a46;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.container-actions button:hover {
+    background: #2c313d;
+}

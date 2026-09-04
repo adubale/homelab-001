@@ -1,4 +1,5 @@
 services:
+
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
@@ -15,7 +16,19 @@ services:
       FTLCONF_dns_listeningMode: all
 
     volumes:
-      - ./etc-pihole:/etc/pihole
+      - ./pihole/etc-pihole:/etc/pihole
 
     cap_add:
       - NET_ADMIN
+
+  dashboard:
+    container_name: dashboard
+    build:
+      context: ./dashboard
+    restart: unless-stopped
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
