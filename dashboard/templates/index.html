@@ -8,6 +8,13 @@
 <body>
     <h1>Homelab Dashboard</h1>
 
+    <h2>System</h2>
+
+    <p>CPU: {{ system.cpu }}%</p>
+    <p>Memory: {{ system.memory }}%</p>
+    <p>Disk: {{ system.disk }}%</p>
+    <p>Uptime: {{ system.uptime }} seconds</p>
+
     <h2>Docker Containers</h2>
 
     {% for container in containers %}
