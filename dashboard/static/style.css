@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0f1117;
+    color: #e6e8eb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dashboard {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    color: #8b919d;
+}
+
+.server-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b8bec8;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #35c759;
+}
+
+section {
+    margin-bottom: 36px;
+}
+
+h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #b8bec8;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.card {
+    padding: 22px;
+    background: #181b23;
+    border: 1px solid #292e38;
+    border-radius: 10px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 12px;
+    color: #8b919d;
+    font-size: 14px;
+}
+
+.value {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.container-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background: #181b23;
+    border: 1px solid #292e38;
+    border-radius: 10px;
+}
+
+.container-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.container-name {
+    font-weight: 600;
+}
+
+.container-image {
+    color: #777e8a;
+    font-size: 13px;
+}
+
+.container-status {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.container-status.running {
+    background: #16351f;
+    color: #62d982;
+}
+
+.container-status.exited {
+    background: #352020;
+    color: #e27b7b;
+}
+
+.empty {
+    padding: 20px;
+    color: #777e8a;
+    background: #181b23;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    .metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header {
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+    }
+}
