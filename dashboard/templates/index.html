@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Homelab Dashboard</h1>
-    <p>Server is online.</p>
+
+    <h2>Docker Containers</h2>
+
+    {% for container in containers %}
+        <div>
+            <strong>{{ container.name }}</strong>
+            — {{ container.status }}
+        </div>
+    {% endfor %}
 </body>
 </html>
